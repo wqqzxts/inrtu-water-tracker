@@ -1,4 +1,4 @@
-package com.example.watertracker
+package com.example.watertracker.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
