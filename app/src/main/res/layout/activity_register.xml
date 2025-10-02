@@ -57,7 +57,12 @@
                 android:text="Мужской"
                 android:textSize="20sp"
                 android:textColor="@color/text"
-                android:fontFamily="@font/inter_18regular"/>
+                android:button="@null"
+                android:drawableStart="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="8dp"
+                android:paddingStart="0dp"
+                android:gravity="start|center_vertical"
+                android:fontFamily="@font/inter_18regular" />
 
             <RadioButton
                 android:id="@+id/femaleRadio"
@@ -67,7 +72,12 @@
                 android:textSize="20sp"
                 android:text="Женский"
                 android:textColor="@color/text"
-                android:fontFamily="@font/inter_18regular"/>
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="8dp"
+                android:paddingEnd="0dp"
+                android:gravity="end|center_vertical"
+                android:fontFamily="@font/inter_18regular" />
         </RadioGroup>
 
         <TextView
