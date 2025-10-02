@@ -6,10 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.watertracker.R
 import androidx.lifecycle.ViewModelProvider
 import android.widget.Toast
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import kotlinx.coroutines.launch
 
 import android.widget.RadioGroup
 import android.widget.Button
@@ -26,12 +22,12 @@ import com.example.watertracker.viewmodel.UserViewModelFactory
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
+    private lateinit var dbHelper: DatabaseHelper
     private lateinit var genderRadioGroup: RadioGroup
     private lateinit var weightEditText: EditText
     private lateinit var heightEditText: EditText
     private lateinit var ageEditText: EditText
     private lateinit var registerButton: Button
-    private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,28 +35,9 @@ class RegisterActivity : AppCompatActivity() {
 
         dbHelper = DatabaseHelper(this@RegisterActivity)
 
-        setupViewModel()
-        // checkUserExists()
         initViews()
+        setupViewModel()
     }
-
-    private fun setupViewModel() {
-        val userDao = UserDao(dbHelper)
-        val repository = UserRepository(userDao)
-        userViewModel = ViewModelProvider(this, UserViewModelFactory(repository))[UserViewModel::class.java]
-    }
-
-//    private fun checkUserExists() {
-//        lifecycleScope.launch {
-//            repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                userViewModel.userExists.collect { userExists ->
-//                    if (userExists) {
-//                        navigateToMainActivity()
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     private fun initViews() {
         genderRadioGroup = findViewById(R.id.genderRadioGroup)
@@ -72,6 +49,12 @@ class RegisterActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             registerUser()
         }
+    }
+
+    private fun setupViewModel() {
+        val userDao = UserDao(dbHelper)
+        val repository = UserRepository(userDao)
+        userViewModel = ViewModelProvider(this, UserViewModelFactory(repository))[UserViewModel::class.java]
     }
 
     private fun registerUser() {
