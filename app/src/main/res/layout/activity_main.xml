@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Water Tracker"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <ImageButton
+            android:id="@+id/accountButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_account"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/todayProgressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0мл / 0мл"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/text_hint"
+        android:fontFamily="@font/inter_18regular"/>
+
+    <ProgressBar
+        android:id="@+id/waterProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:progress="0" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить потребление воды"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/text"
+        android:fontFamily="@font/inter_18regular"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp">
+
+        <Button
+            android:id="@+id/log250Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="250мл"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/background"
+            android:fontFamily="@font/inter_18regular"
+            android:background="@color/accent_blue"/>
+
+        <Button
+            android:id="@+id/log500Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="500мл"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/background"
+            android:fontFamily="@font/inter_18regular"
+            android:background="@color/accent_blue"/>
+
+        <Button
+            android:id="@+id/logCustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Вручную"
+            android:textColor="@color/background"
+            android:fontFamily="@font/inter_18regular"
+            android:background="@color/accent_blue"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Недельный прогресс"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/text"
+        android:fontFamily="@font/inter_18regular"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/averageConsumptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Среднее дневное потребление: 0мл"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="@color/text"
+        android:fontFamily="@font/inter_18regular"/>
+
+</LinearLayout>
