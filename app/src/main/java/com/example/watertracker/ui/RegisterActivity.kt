@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
 import android.widget.RadioGroup
 import android.widget.Button
@@ -22,7 +23,6 @@ import com.example.watertracker.data.repository.UserRepository
 import com.example.watertracker.util.WaterDailyNeedCalculator
 import com.example.watertracker.viewmodel.UserViewModel
 import com.example.watertracker.viewmodel.UserViewModelFactory
-import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
