@@ -5,6 +5,7 @@ coreKtx = "1.12.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityKtx = "1.8.0"
 appcompat = "1.7.1"
+material = "1.13.0"
 mpandroidchart = "v3.1.0"
 
 [libraries]
@@ -12,6 +13,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 
 [plugins]

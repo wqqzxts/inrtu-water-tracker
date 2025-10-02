@@ -20,6 +20,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.text.InputType
+import android.widget.ImageButton
 
 import com.example.watertracker.R
 import com.example.watertracker.data.dao.DatabaseHelper
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var waterConsumptionViewModel: WaterConsumptionViewModel
     private lateinit var dbHelper: DatabaseHelper
-    private lateinit var accountButton: Button
+    private lateinit var accountButton: ImageButton
     private lateinit var todayProgressText: TextView
     private lateinit var waterProgressBar: ProgressBar
     private lateinit var log250Button: Button
