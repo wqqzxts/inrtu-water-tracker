@@ -53,8 +53,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val userDao = UserDao(dbHelper)
-        val repository = UserRepository(userDao)
-        userViewModel = ViewModelProvider(this, UserViewModelFactory(repository))[UserViewModel::class.java]
+        val userRepository = UserRepository(userDao)
+        userViewModel = ViewModelProvider(this, UserViewModelFactory(userRepository))[UserViewModel::class.java]
     }
 
     private fun registerUser() {

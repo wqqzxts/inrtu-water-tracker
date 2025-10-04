@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Water Tracker"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginBottom="32dp"
@@ -144,10 +144,10 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
             android:text="Зарегистрироваться"
-            android:textSize="20sp"
-            android:background="@color/accent_blue"
-            android:textColor="@color/background"/>
+            android:textColor="@color/background"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 </ScrollView>

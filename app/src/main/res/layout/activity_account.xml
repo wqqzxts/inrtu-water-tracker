@@ -1,6 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Редактировать профиль"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Здесь вы можете редактировать ваши данные, заполнив форму ниже"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Пол"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/maleRadio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Мужской"
+                android:textSize="20sp"
+                android:textColor="@color/text"
+                android:button="@null"
+                android:drawableStart="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="8dp"
+                android:paddingStart="0dp"
+                android:gravity="start|center_vertical"
+                android:fontFamily="@font/inter_18regular" />
+
+            <RadioButton
+                android:id="@+id/femaleRadio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="Женский"
+                android:textColor="@color/text"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="8dp"
+                android:paddingEnd="0dp"
+                android:gravity="end|center_vertical"
+                android:fontFamily="@font/inter_18regular" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Вес (кг)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/text_hint"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <EditText
+            android:id="@+id/weightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Введите вес"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/text_hint"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Рост (см)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <EditText
+            android:id="@+id/heightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Введите рост"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/text_hint"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Возраст"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <EditText
+            android:id="@+id/ageEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Введите возраст"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/text_hint"
+            android:fontFamily="@font/inter_18regular"/>
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:text="Сохранить"
+            android:textColor="@color/background"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+</ScrollView>
