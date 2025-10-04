@@ -201,7 +201,6 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToAccountActivity() {
         val intent = Intent(this, AccountActivity::class.java)
         startActivity(intent)
-        finish()
     }
 }
 

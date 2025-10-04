@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Water Tracker"
+            android:text="Редактировать профиль"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Пожалуйста, завершите регистрацию, заполнив форму ниже"
+            android:text="Здесь вы можете редактировать ваши данные, заполнив форму ниже"
             android:textSize="20sp"
             android:textStyle="normal"
             android:gravity="center"
@@ -145,7 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_button"
-            android:text="Зарегистрироваться"
+            android:text="Сохранить"
             android:textColor="@color/background"
             android:textSize="20sp"/>
 

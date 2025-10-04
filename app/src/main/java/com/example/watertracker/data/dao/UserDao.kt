@@ -60,7 +60,7 @@ class UserDao(private val dbHelper: DatabaseHelper) {
         }
 
         val result = db.update(
-            DatabaseHelper.TABLE_WATER_CONSUMPTION,
+            DatabaseHelper.TABLE_USER,
             values,
             "${DatabaseHelper.COLUMN_USER_ID} = ?",
             arrayOf(user.id.toString())
