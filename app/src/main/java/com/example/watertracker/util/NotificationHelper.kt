@@ -54,6 +54,8 @@ class NotificationHelper(private val context: Context) {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .build()
+
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 
     fun cancelReminders() {

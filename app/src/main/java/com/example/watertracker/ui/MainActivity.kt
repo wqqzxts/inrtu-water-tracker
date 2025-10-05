@@ -1,11 +1,8 @@
 package com.example.watertracker.ui
 
-import android.annotation.TargetApi
 import android.app.AlertDialog
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -25,8 +22,6 @@ import android.widget.TextView
 import android.text.InputType
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 
 import com.example.watertracker.R
 import com.example.watertracker.data.dao.DatabaseHelper
@@ -216,20 +211,6 @@ class MainActivity : AppCompatActivity() {
             R.drawable.ic_notifications_off
         }
         notificationButton.setImageResource(iconRes)
-    }
-
-    @TargetApi(Build.VERSION_CODES.TIRAMISU)
-    private fun requestNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) !=
-                PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
-                    100
-                )
-            }
-        }
     }
 
     private fun showCustomAmountDialog() {
