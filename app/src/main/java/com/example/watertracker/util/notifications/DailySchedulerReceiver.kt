@@ -11,7 +11,7 @@ class DailySchedulerReceiver : BroadcastReceiver() {
 
         if (preferencesManager.areNotificationsEnabled()) {
             val notificationScheduler = NotificationScheduler(context)
-            notificationScheduler.scheduleDailyScheduler()
+            notificationScheduler.scheduleWaterReminders()
         }
     }
 }

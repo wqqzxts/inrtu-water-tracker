@@ -237,7 +237,7 @@ class MainActivity : AppCompatActivity() {
         updateNotificationButtonIcon()
 
         if (notificationsEnabled) {
-            notificationScheduler.scheduleWaterReminders()
+            notificationScheduler.scheduleDailyScheduler()
         }
     }
 
