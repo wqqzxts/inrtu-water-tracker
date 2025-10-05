@@ -210,11 +210,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateNotificationButtonIcon() {
-        val iconRes = if (notificationsEnabled) {
-            R.drawable.ic_notifications_on
-        } else {
-            R.drawable.ic_notifications_off
-        }
+        val iconRes = if (notificationsEnabled) R.drawable.ic_notifications_on else R.drawable.ic_notifications_off
         notificationButton.setImageResource(iconRes)
     }
 
