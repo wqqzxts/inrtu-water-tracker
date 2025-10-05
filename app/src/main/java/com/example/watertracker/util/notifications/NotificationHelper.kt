@@ -1,4 +1,4 @@
-package com.example.watertracker.util
+package com.example.watertracker.util.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -25,10 +25,10 @@ class NotificationHelper(private val context: Context) {
     private fun createNotificationChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "Напоминания о воде",
+            "Напоминания об употреблении воды",
             NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
-            description = "Напоминания о употреблении воды"
+            description = "Напоминания об употреблении воды каждые 1.5 часа с 10 до 22, если в последние 1.5 часа не было записи"
         }
 
         notificationManager.createNotificationChannel(channel)
@@ -49,7 +49,7 @@ class NotificationHelper(private val context: Context) {
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_water_drop)
             .setContentTitle("\uD83D\uDCA7 Время пить воду!")
-            .setContentText("Не забудьте выпить воду и сохранить это в приложении")
+            .setContentText("Не забудьте попить воды")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

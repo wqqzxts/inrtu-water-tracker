@@ -1,4 +1,4 @@
-package com.example.watertracker.ui
+package com.example.watertracker.util.notifications
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -7,7 +7,6 @@ import java.util.Calendar
 
 import com.example.watertracker.data.dao.DatabaseHelper
 import com.example.watertracker.data.dao.WaterConsumptionDao
-import com.example.watertracker.util.NotificationHelper
 
 class WaterReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

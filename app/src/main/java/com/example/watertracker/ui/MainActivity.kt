@@ -25,12 +25,13 @@ import android.widget.Toast
 
 import com.example.watertracker.R
 import com.example.watertracker.data.dao.DatabaseHelper
+import com.example.watertracker.data.dao.PreferencesManager
 import com.example.watertracker.data.dao.UserDao
 import com.example.watertracker.data.dao.WaterConsumptionDao
 import com.example.watertracker.data.repository.UserRepository
 import com.example.watertracker.data.repository.WaterConsumptionRepository
-import com.example.watertracker.util.NotificationHelper
-import com.example.watertracker.util.NotificationScheduler
+import com.example.watertracker.util.notifications.NotificationHelper
+import com.example.watertracker.util.notifications.NotificationScheduler
 import com.example.watertracker.viewmodel.UserViewModel
 import com.example.watertracker.viewmodel.UserViewModelFactory
 import com.example.watertracker.viewmodel.WaterConsumptionViewModel
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var waterConsumptionViewModel: WaterConsumptionViewModel
     private lateinit var dbHelper: DatabaseHelper
+    private lateinit var preferencesManager: PreferencesManager
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var notificationScheduler: NotificationScheduler
     private lateinit var accountButton: ImageButton
@@ -61,12 +63,14 @@ class MainActivity : AppCompatActivity() {
         notificationHelper = NotificationHelper(this)
 
         dbHelper = DatabaseHelper(this@MainActivity)
+        preferencesManager = PreferencesManager(this)
 
         initViews()
         setupViewModel()
         checkUserExists()
         setupObservers()
         setupClickListeners()
+        loadNotificationState()
     }
 
     private fun initViews() {
@@ -191,6 +195,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun toggleNotifications() {
         notificationsEnabled = !notificationsEnabled
+        preferencesManager.setNotificationsEnabled(notificationsEnabled)
 
         if (notificationsEnabled) {
             notificationScheduler.scheduleWaterReminders()
@@ -229,6 +234,15 @@ class MainActivity : AppCompatActivity() {
             }
             .setNegativeButton("Отмена", null)
             .show()
+    }
+
+    private fun loadNotificationState() {
+        notificationsEnabled = preferencesManager.areNotificationsEnabled()
+        updateNotificationButtonIcon()
+
+        if (notificationsEnabled) {
+            notificationScheduler.scheduleWaterReminders()
+        }
     }
 
     private fun navigateToRegisterActivity() {
