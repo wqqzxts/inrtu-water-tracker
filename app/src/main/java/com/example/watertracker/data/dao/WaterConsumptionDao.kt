@@ -97,4 +97,25 @@ class WaterConsumptionDao(private val dbHelper: DatabaseHelper) {
             0
         }
     }
+
+    fun getConsumptionSince(sinceTime: Long): Int {
+        val db = dbHelper.readableDatabase
+
+        val query = """
+            SELECT SUM(${DatabaseHelper.COLUMN_AMOUNT}) AS total
+            FROM ${DatabaseHelper.TABLE_WATER_CONSUMPTION}
+            WHERE ${DatabaseHelper.COLUMN_TIMESTAMP} >= ?
+        """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(sinceTime.toString()))
+
+        return if (cursor.moveToFirst()) {
+            val total = cursor.getInt(cursor.getColumnIndexOrThrow("total"))
+            cursor.close()
+            total
+        } else {
+            cursor.close()
+            0
+        }
+    }
 }

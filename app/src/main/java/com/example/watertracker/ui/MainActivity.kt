@@ -1,8 +1,11 @@
 package com.example.watertracker.ui
 
+import android.annotation.TargetApi
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +24,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.text.InputType
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 import com.example.watertracker.R
 import com.example.watertracker.data.dao.DatabaseHelper
@@ -28,6 +34,8 @@ import com.example.watertracker.data.dao.UserDao
 import com.example.watertracker.data.dao.WaterConsumptionDao
 import com.example.watertracker.data.repository.UserRepository
 import com.example.watertracker.data.repository.WaterConsumptionRepository
+import com.example.watertracker.util.NotificationHelper
+import com.example.watertracker.util.NotificationScheduler
 import com.example.watertracker.viewmodel.UserViewModel
 import com.example.watertracker.viewmodel.UserViewModelFactory
 import com.example.watertracker.viewmodel.WaterConsumptionViewModel
@@ -37,7 +45,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var waterConsumptionViewModel: WaterConsumptionViewModel
     private lateinit var dbHelper: DatabaseHelper
+    private lateinit var notificationHelper: NotificationHelper
+    private lateinit var notificationScheduler: NotificationScheduler
     private lateinit var accountButton: ImageButton
+    private lateinit var notificationButton: ImageButton
     private lateinit var todayProgressText: TextView
     private lateinit var waterProgressBar: ProgressBar
     private lateinit var log250Button: Button
@@ -45,10 +56,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var logCustomButton: Button
     private lateinit var lineChart: LineChart
     private lateinit var averageConsumptionText: TextView
+    private var notificationsEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        notificationScheduler = NotificationScheduler(this)
+        notificationHelper = NotificationHelper(this)
 
         dbHelper = DatabaseHelper(this@MainActivity)
 
@@ -61,6 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         accountButton = findViewById(R.id.accountButton)
+        notificationButton = findViewById(R.id.notificationButton)
         todayProgressText = findViewById(R.id.todayProgressText)
         waterProgressBar = findViewById(R.id.waterProgressBar)
         log250Button = findViewById(R.id.log250Button)
@@ -161,6 +177,10 @@ class MainActivity : AppCompatActivity() {
             navigateToAccountActivity()
         }
 
+        notificationButton.setOnClickListener {
+            toggleNotifications()
+        }
+
         log250Button.setOnClickListener {
             waterConsumptionViewModel.logWater(250)
         }
@@ -171,6 +191,44 @@ class MainActivity : AppCompatActivity() {
 
         logCustomButton.setOnClickListener {
             showCustomAmountDialog()
+        }
+    }
+
+    private fun toggleNotifications() {
+        notificationsEnabled = !notificationsEnabled
+
+        if (notificationsEnabled) {
+            notificationScheduler.scheduleWaterReminders()
+            Toast.makeText(this, "Уведомления об употреблении воды включены", Toast.LENGTH_SHORT).show()
+        } else {
+            notificationScheduler.cancelReminders()
+            notificationHelper.cancelReminders()
+            Toast.makeText(this, "Уведомления об употреблении воды выключены", Toast.LENGTH_SHORT).show()
+        }
+
+        updateNotificationButtonIcon()
+    }
+
+    private fun updateNotificationButtonIcon() {
+        val iconRes = if (notificationsEnabled) {
+            R.drawable.ic_notifications_on
+        } else {
+            R.drawable.ic_notifications_off
+        }
+        notificationButton.setImageResource(iconRes)
+    }
+
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    100
+                )
+            }
         }
     }
 
