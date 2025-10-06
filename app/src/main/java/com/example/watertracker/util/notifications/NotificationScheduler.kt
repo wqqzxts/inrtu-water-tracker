@@ -18,6 +18,8 @@ class NotificationScheduler(private val context: Context) {
     fun scheduleWaterReminders() {
         cancelReminders()
 
+        scheduleDailyScheduler()
+
         scheduleTodaysReminders()
     }
 

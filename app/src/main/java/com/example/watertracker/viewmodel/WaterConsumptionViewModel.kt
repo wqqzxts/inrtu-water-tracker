@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-import com.example.watertracker.data.model.WaterConsumption
 import com.example.watertracker.data.repository.WaterConsumptionRepository
 
 class WaterConsumptionViewModel(private val repository: WaterConsumptionRepository): ViewModel() {

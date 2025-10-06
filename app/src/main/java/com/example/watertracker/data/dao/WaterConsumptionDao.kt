@@ -60,8 +60,6 @@ class WaterConsumptionDao(private val dbHelper: DatabaseHelper) {
             set(Calendar.MILLISECOND, 0)
         }
 
-        val startOfWeek = calendar.timeInMillis
-
         val consumptionList = mutableListOf<Pair<Date, Int>>()
 
         for (i in 0..6) {
